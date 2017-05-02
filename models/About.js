@@ -3,25 +3,28 @@ var Types = keystone.Field.Types;
 
 //About model
 var About = new keystone.List('About', {
+	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title', unique: true }
 });
 
 About.add({
-	title: { type: String },
+	title: { type: String, required: true },
 	author: {
 		type: Types.Relationship,
 		ref: 'User',
 		index: true
 	},
+	state: {
+		type: Types.Select,
+		options: 'draft, published, archived',
+		default: 'draft',
+		index: true
+	},
 	publishedDate: { type: Types.Date, index: true },
 	image: { type: Types.CloudinaryImage },
-	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 200 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 }
-	},
-	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
+	content: { type: Types.Html, wysiwyg: true, height: 400 }
 });
 
-About.defaultColumns = 'title, author|20%, categories|20%, publishedDate|20%';
+About.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
 
 About.register();

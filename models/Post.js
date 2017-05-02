@@ -7,19 +7,11 @@ var Post = new keystone.List('Post', {
 	//track - allows us to keep track
 	//of when and who created
 	//and last updated an item
-	//track: true
+	// track: true
 });
 
 Post.add({
 	title: { type: String, required: true },
-	//select so the value can be set
-	//to one of the options/choices
-	//default is set to draft
-	state: {
-		type: Types.Select,
-		options: 'draft, published, archived',
-		default: 'draft',
-		index: true },
 	//index = true - will tells keystone
 	//that we are interested in
 	//a database index to be
@@ -27,6 +19,15 @@ Post.add({
 	author: {
 		type: Types.Relationship,
 		ref: 'User',
+		index: true
+	},
+	//select so the value can be set
+	//to one of the options/choices
+	//default is set to draft
+	state: {
+		type: Types.Select,
+		options: 'draft, published, archived',
+		default: 'draft',
 		index: true
 	},
 	publishedDate: {
