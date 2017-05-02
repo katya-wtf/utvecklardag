@@ -7,7 +7,7 @@ var About = new keystone.List('About', {
 });
 
 About.add({
-	title: { type: String, required: true },
+	title: { type: String },
 	author: {
 		type: Types.Relationship,
 		ref: 'User',
@@ -20,10 +20,6 @@ About.add({
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
-});
-
-About.schema.virtual('content full').get(function(){
-	return.this.extended || this.content.brief;
 });
 
 About.defaultColumns = 'title, author|20%, categories|20%, publishedDate|20%';
