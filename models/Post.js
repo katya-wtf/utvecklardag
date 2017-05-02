@@ -5,7 +5,7 @@ var Post = new keystone.List('Post', {
 	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title', unique: true }
 	//track - allows us to keep track
-	//of when and who created 
+	//of when and who created
 	//and last updated an item
 	//track: true
 });
@@ -15,10 +15,10 @@ Post.add({
 	//select so the value can be set
 	//to one of the options/choices
 	//default is set to draft
-	state: { 
-		type: Types.Select, 
-		options: 'draft, published, archived', 
-		default: 'draft', 
+	state: {
+		type: Types.Select,
+		options: 'draft, published, archived',
+		default: 'draft',
 		index: true },
 	//index = true - will tells keystone
 	//that we are interested in
@@ -32,9 +32,9 @@ Post.add({
 	publishedDate: {
 		type: Types.Date,
 		index: true,
-		dependsOn: { 
-			state: 'published' 
-		} 
+		dependsOn: {
+			state: 'published'
+		}
 	},
 	image: { type: Types.CloudinaryImage },
 	content: {
@@ -44,9 +44,9 @@ Post.add({
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
 });
 
-//virtual properties allows us 
+//virtual properties allows us
 //to format the data in fields
-//when retrieving them from a 
+//when retrieving them from a
 //model or setting their value
 Post.schema.virtual('content.full').get(function (){
 	return this.content.extended || this.content.brief;
@@ -55,6 +55,6 @@ Post.schema.virtual('content.full').get(function (){
 //defaultColumns - allows you to set
 //the fields of your model that you
 //want to display in admin list page.
-Post.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Post.defaultColumns = 'title, state|20%, author|20%, categories|20%, publishedDate|20%';
 
 Post.register();
