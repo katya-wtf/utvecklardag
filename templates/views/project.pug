@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+block intro
+	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+		p: a(href='/projects') &larr; tillbaka till projekten
+
+block content
+	.container
+		.row
+			.col-sm-5
+				article
+					header
+						h1= data.project.title
+						p!= data.project.content.extended
+			.col-sm-5
+				a(class='btn btn-success btn-block' href='') anmäl till projektet

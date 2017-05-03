@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block intro
+	.container: .row: .col-sm-12.col-md-12
+		h1 /Projekt
+
+block content
+	.container: .row: .col-sm-12.col-md-12
+		if projects.length
+			.row
+				each project in projects
+					.col-sm-12.col-md-3
+						h3: a(href='/projects/' + project.slug)= project.title
+						p!= project.content.brief
+		else
