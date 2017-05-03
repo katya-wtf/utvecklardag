@@ -12,7 +12,7 @@ block content
 					h1= data.post.title
 					h5 Publicerad
 						if data.post.publishedDate
-							| #{data.post._.publishedDate.format('MMMM Do, YYYY')}
+							| #{data.post._.publishedDate.format('YYYY-MM-DD')}
 						if data.post.categories && data.post.categories.length
 							| in
 							each cat, cat_i in data.post.categories
@@ -25,5 +25,5 @@ block content
 							| by #{data.post.author.name.first}
 				.post
 					if data.post.image.exists
-						.image-wrap: img(src=data.post._.image.fit(750,450)).img-responsive
+						.image-wrap: img(src=data.post._.image.fit(150, 150)).img-responsive
 					!= data.post.content.full

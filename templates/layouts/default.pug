@@ -45,23 +45,12 @@ html
 			div(role="navigation").navbar.navbar-default
 				.container-fluid
 					.navbar-header
-						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-							span.sr-only Toggle navigation
-							span.icon-bar
-							span.icon-bar
-							span.icon-bar
-						img(src='/images/OddHillLogotyp/logotyp_svart_CMYK_med_beskrivning.png', width='160')
+						a(href='/')
+							img(src='/images/OddHillLogotyp/Klar/PNG/symbol_svart.png').nav-image
 					.collapse.navbar-collapse
-						ul.nav.navbar-nav.navbar-left
+						ul.nav.navbar-nav.navbar-right
 							each link in navLinks
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-						ul.nav.navbar-nav.navbar-right
-							if user
-								if user.canAccessKeystone
-									li: a(href='/keystone') Open Keystone
-								li: a(href='/keystone/signout') Sign Out
-							else
-								li: a(href='/keystone/signin') Sign In
 
 		//- BODY
 		#body
@@ -83,10 +72,6 @@ html
 
 		//- FOOTER
 		.container: #footer
-
-			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
-			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
-
 
 		//- JAVASCRIPT
 

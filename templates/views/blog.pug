@@ -3,11 +3,11 @@ extends ../layouts/default
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 		h2: a(href='/blog/post/' + post.slug)= post.title
-		p.lead.text-muted Posted
+		p.lead.text-muted Publicerad
 			if post.publishedDate
-				| on #{post._.publishedDate.format('MMMM Do, YYYY')}
+				| #{post._.publishedDate.format('YYYY-MM-DD')}
 			if post.categories && post.categories.length
-				| in
+				| i
 				each cat, i in post.categories
 					a(href='/blog/' + cat.key)= cat.name
 					if i < post.categories.length - 1
@@ -15,16 +15,12 @@ mixin post(post)
 					else
 						|
 			if post.author
-				| by #{post.author.name.first}
+				| av #{post.author.name.first}
 		if post.image.exists
 			img(src=post._.image.fit(160,160)).img.pull-right
 		p!= post.content.brief
 		if post.content.extended
-			p.read-more: a(href='/blog/post/' + post.slug) Read more...
-
-block intro
-	.container
-		h1= data.category ? data.category.name : 'Blog'
+			p.read-more: a(href='/blog/post/' + post.slug) Läs mer...
 
 block content
 	.container: .row
@@ -41,8 +37,7 @@ block content
 							|  of
 							strong #{data.posts.total}
 							|  posts.
-					else
-						h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
+
 					.blog
 						each post in data.posts.results
 							+post(post)
