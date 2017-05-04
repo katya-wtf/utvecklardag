@@ -19,6 +19,8 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'pug',
 
+	'emails': 'templates/emails',
+
 	'auto update': true,
 	'session': true,
 	'auth': true,
@@ -44,11 +46,27 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
+	posts: ['posts', 'post-categories'],
+	enquiries: 'enquiries',
+	projects: 'projects',
 	users: 'users',
 });
 
+keystone.set('email transport', 'mailgun');
+keystone.set('mailgun api key', 'key-6573d6b1648b744549d9af7e6a250d0e');
+keystone.set('mailgun domain', 'sandboxeb5e3328519a401fac42bd43fe03a6c5.mailgun.org');
+
+
 // Start Keystone to connect to your database and initialise the web server
 
-
+if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
+	console.log('----------------------------------------'
+	+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
+	+ '\n----------------------------------------'
+	+ '\nYou have opted into email sending but have not provided'
+	+ '\nmailgun credentials. Attempts to send will fail.'
+	+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
+	+ '\nset up your mailgun integration');
+}
 
 keystone.start();

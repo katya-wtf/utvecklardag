@@ -7,10 +7,10 @@ block intro
 block content
 	.container
 		.row
-			.col-sm-5
+			.project.col-sm-5
 				article
 					header
-						h1= data.project.title
+						h1.headlines= data.project.title
 						p!= data.project.content.extended
 			.col-sm-5
-				a(class='btn btn-success btn-block' href='') anmäl till projektet
+				a(class='btn btn-success btn-block' href='/contact') anmäl till projektet
