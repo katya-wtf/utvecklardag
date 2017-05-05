@@ -56,6 +56,9 @@ html
 						ul.nav.navbar-nav.navbar-left
 							each link in navLinks
 								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+						ul.nav.navbar-nav.navbar-right
+
+
 
 		//- BODY
 		#body
@@ -76,7 +79,23 @@ html
 
 
 		//- FOOTER
-		.container: #footer
+		footer
+			.container-fluid
+				.row
+					.col-xs-12
+						p Humlegatan 4, 211 27 Malmö
+						p - info@oddhill.se
+						p - 070 835 81 58
+					#footer-icons
+						span.facebook
+							a(href='https://facebook.com/oddhill' target='_blank') Facebook
+						span.twitter
+							a(href='https://twitter.com/odhillab' target='_blank') Twitter
+						span.instagram
+							a(href='https://instagram.com/odhill.se' target='_blank') Instagram
+
+
+
 
 		//- JAVASCRIPT
 

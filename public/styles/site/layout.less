@@ -1,7 +1,13 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
 body {
 	color: #36275F;
 	font-family: 'Roboto Mono', monospace;
 	font-weight: 300;
+	margin-bottom: 110px;
 	overflow-x: hidden;
 }
 
@@ -27,12 +33,58 @@ span {
 	margin-top: 30px;
 }
 
-#footer {
-	margin-top: 30px;
-	border-top: 1px solid #eeeeee;
-	padding-top: 30px;
-	color: #777777;
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: yellow;
+	text-align: center;
+	/* Set the fixed height of the footer here */
+	height: 90px;
+
+	p {
+		display: inline-block;
+		margin: 0 0 0;
+		margin-top: 5px;
+	}
+
+	#footer-icons {
+
+		clear: both;
+		text-align: center;
+		font-size: 100%;
+
+		span a {
+			display: inline-block;
+			width: 32px;
+			height: 32px;
+			line-height: 0px;
+			color: #343434;
+			font-size: 0;
+			overflow: hidden;
+			margin: 0 5px;
+		}
+	}
+
+	.facebook a {
+		background: url('/images/SocialMedia/facebook.svg') no-repeat center top;
+	}
+
+	.twitter a {
+		background: url('/images/SocialMedia/twitter.svg') no-repeat center top;
+	}
+
+	.instagram a {
+		background: url('/images/SocialMedia/instagram.svg') no-repeat center top;
+	}
 }
+
+@media screen and (max-width: 1000px) {
+	footer {
+
+	}
+}
+
 
 .navbar-default {
 	background-color: #FFFFFF;
