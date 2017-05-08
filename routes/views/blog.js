@@ -3,7 +3,7 @@ var async = require('async');
 
 exports = module.exports = function (req, res) {
 
-    var view = new keystone.View(req, res);
+    var view = new keystone.View (req, res);
     var locals = res.locals;
 
     locals.section = 'blogg';
@@ -62,8 +62,10 @@ exports = module.exports = function (req, res) {
             next();
         }
     });
+
     //load the posts
     view.on('init', function (next) {
+
         var q = keystone.list('Post').paginate({
             page: req.query.page || 1,
             perPage: 10,
@@ -78,10 +80,12 @@ exports = module.exports = function (req, res) {
         if (locals.data.category) {
             q.where('categories').in([locals.data.category]);
         }
+
         q.exec(function (err, results) {
             locals.data.posts = results;
             next(err);
         });
     });
+
     view.render('blog');
 };

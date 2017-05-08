@@ -5,9 +5,7 @@ exports = module.exports = function (req, res) {
     var view = new keystone.View (req, res);
     var locals = res.locals;
 
-    //set locals
-    // locals.section is used to set the currently selected
-    // item in the header navigation.
+	//locals = active section in admin navbar
     locals.section = 'blog';
     locals.filters = {
         post: req.params.post
@@ -15,17 +13,21 @@ exports = module.exports = function (req, res) {
     locals.data = {
         posts: []
     };
+
     //load current post
     view.on('init', function (next) {
+
         var q = keystone.list('Post').model.findOne({
             state: 'published',
             slug: locals.filters.post,
         }).populate('author categories');
+
         q.exec(function (err, result) {
             locals.data.post = result;
             next(err);
         });
     });
+
     //load other posts
     view.on('init', function (next) {
 
@@ -43,6 +45,5 @@ exports = module.exports = function (req, res) {
         });
     });
 
-    //render view
     view.render('post');
 };

@@ -4,26 +4,11 @@ var Types = keystone.Field.Types;
 var Post = new keystone.List('Post', {
 	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title', unique: true }
-	//track - allows us to keep track
-	//of when and who created
-	//and last updated an item
-	// track: true
 });
 
 Post.add({
 	title: { type: String, required: true },
-	//index = true - will tells keystone
-	//that we are interested in
-	//a database index to be
-	//created for this field.
-	author: {
-		type: Types.Relationship,
-		ref: 'User',
-		index: true
-	},
-	//select so the value can be set
-	//to one of the options/choices
-	//default is set to draft
+	author: { type: Types.Relationship, ref: 'User', index: true },
 	state: {
 		type: Types.Select,
 		options: 'draft, published, archived',
@@ -45,17 +30,10 @@ Post.add({
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
 });
 
-//virtual properties allows us
-//to format the data in fields
-//when retrieving them from a
-//model or setting their value
 Post.schema.virtual('content.full').get(function (){
 	return this.content.extended || this.content.brief;
 });
 
-//defaultColumns - allows you to set
-//the fields of your model that you
-//want to display in admin list page.
 Post.defaultColumns = 'title, state|20%, author|20%, categories|20%, publishedDate|20%';
 
 Post.register();

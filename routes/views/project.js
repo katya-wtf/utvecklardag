@@ -1,11 +1,11 @@
 var keystone = require('keystone');
 
 exports = module.exports = function (req, res) {
+
 	var view = new keystone.View (req, res);
 	var locals = res.locals;
 
-	//set locals
-	//section = active class in navbar
+	//locals = active section in admin navbar
 	locals.section = 'projekt';
 	locals.filters = {
 		project: req.params.project
@@ -14,14 +14,33 @@ exports = module.exports = function (req, res) {
 		projects: []
 	};
 
+	//load current project
 	view.on('init', function (next) {
+
 		var q = keystone.list('Project').model.findOne({
+			state: 'published',
 			slug: locals.filters.project
-		});
+		}).populate('author categories');
 
 		q.exec(function (err, result) {
 			locals.data.project = result;
-			next();
+			next(err);
+		});
+	});
+
+	//load all projects
+	view.on('init', function (next) {
+
+		var q = keystone.list('Project')
+						.model
+						.find()
+						.where('state', 'published')
+						.sort('-publishedDate')
+						.populate('author');
+
+		q.exec(function (err, results) {
+			locals.data.projects = results;
+			next(err);
 		});
 	});
 

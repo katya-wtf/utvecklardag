@@ -23,6 +23,7 @@ block content
 									|
 						if data.post.author
 							|  av #{data.post.author.name.first}
+
 				.post
 					if data.post.image.exists
 						.image-wrap: img(src=data.post._.image.fit(150, 150)).img-responsive
