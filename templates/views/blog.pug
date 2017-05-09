@@ -22,11 +22,15 @@ mixin post(post)
 		if post.content.extended
 			p.read-more: a(href='/blog/post/' + post.slug) Läs mer...
 
+	block intro
+		.container: .row: .col-sm-12.col-md-12
+			h1 /BLOGG
+
 block content
 	.container: .row
 		.col-sm-8.col-md-9
 			if filters.category && !data.category
-				h3.text-muted Invalid Category.
+				h3.text-muted Ogiltig kategori.
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
@@ -57,14 +61,14 @@ block content
 								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
-						h3.text-muted There are no posts in the category #{data.category.name}.
+						h3.text-muted Det finns inga inlägg i kategorin #{data.category.name}.
 					else
-						h3.text-muted There are no posts yet.
+						h3.text-muted Det finns inga inlägg ännu.
 
 		if data.categories.length
 			.col-sm-4.col-md-3
-				h2 Categories
-				.list-group(style='margin-top: 70px;')
-					a(href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
+				h2 Kategorier
+				.list-group(style='margin-top: 20px;')
+					a(href='/blog', class=!data.category ? 'active' : false).list-group-item Alla kategorier
 					each cat in data.categories
 						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
