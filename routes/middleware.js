@@ -9,7 +9,6 @@
  */
 var _ = require('lodash');
 
-
 /**
 	Initialises the standard view locals
 
@@ -21,35 +20,11 @@ exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
 		{ label: 'Hem', key: 'hem', href: '/' },
 		{ label: 'Blogg', key: 'blogg', href: '/blog' },
-		{ label: 'Projekt', key: 'projekt', href: '/projects' },
-		{ label: 'Anmälan', key: 'contact', href: '/contact' }
+		{ label: 'Projekt', key: 'projekt', href: '/projects' }
 	];
 	res.locals.user = req.user;
 	next();
 };
-
-/**
-    Inits the error handler functions into `res`
-*/
-exports.initErrorHandlers = function(req, res, next) {
-    res.err = function(err, title, message) {
-        res.status(500).render('errors/500', {
-            err: err,
-            errorTitle: title,
-            errorMsg: message
-        });
-    }
-
-    res.notfound = function(title, message) {
-        res.status(404).render('errors/404', {
-            errorTitle: title,
-            errorMsg: message
-        });
-    }
-
-    next();
-};
-
 
 /**
 	Fetches and clears the flashMessages before a view is rendered
@@ -64,7 +39,6 @@ exports.flashMessages = function (req, res, next) {
 	res.locals.messages = _.some(flashMessages, function (msgs) { return msgs.length; }) ? flashMessages : false;
 	next();
 };
-
 
 /**
 	Prevents people from accessing protected pages when they're not signed in
