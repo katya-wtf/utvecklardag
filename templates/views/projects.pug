@@ -17,7 +17,7 @@ mixin project(project)
 			if project.author
 				|  av #{project.author.name.first}
 		if project.image.exists
-			img(src=project._._image.fit(160,160)).img.pull-right
+			img(src=project._.image.fit(160,160)).img.pull-right
 		p!= project.content.brief
 		if project.content.extended
 			p.read-more: a(href='/projects/project/' + project.slug) Läs mer...
