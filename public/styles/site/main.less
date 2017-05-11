@@ -2,13 +2,40 @@
 	margin-left: 30px;
 }
 
-/*POLYGON ELEMENT*/
+/* #UTVECKLARDAG ELEMENT */
+
+.hashtag {
+	position: absolute;
+	float: left;
+	z-index: 3;
+	// TEMPORARY
+	font-family: 'Roboto Mono', monospace;
+	font-size: 200px;
+	color: #3f51b5;
+
+	margin-left: -20px; // ADJUST LEFT VISIBILITY OF CONTENT
+}
+
+/* DATE ELEMENT */
+
+.date {
+	position: absolute;
+	float: right;
+	z-index: 2;
+	// TEMPORARY
+	font-family: 'Roboto Mono', monospace;
+	font-size: 300px;
+	font-weight: 900;
+	color: #fe8d64;
+}
+
+/* POLYGON ELEMENT */
 
 .polygon {
 	background-color: #64ffda;
 	width: inherit;
 	height: 80vh;
-	clip-path: polygon(0 0, 100% 0, 100% 30%, 70% 0, 0 40%);
+	clip-path: polygon(0 0, 100% 0, 100% 30%, 70% 0, 0 100%);
 }
 
 html {
@@ -44,7 +71,7 @@ span {
 	font-family: 'Roboto Mono', monospace;
 }
 
-/*FOOTER*/
+/* FOOTER */
 
 footer {
 	position: absolute;
