@@ -2,6 +2,12 @@
 	margin-left: 30px;
 }
 
+.polygon {
+	background-color: #64ffda;
+	width: inherit;
+	height: 80vh;
+	clip-path: polygon(0 0, 100% 0, 100% 30%, 70% 0, 0 40%);
+}
 
 html {
 	position: relative;
@@ -14,7 +20,7 @@ body {
 	font-weight: 300;
 	margin-bottom: 110px;
 	overflow-x: hidden;
-	background-color: #64ffda;
+	background-color: #fdf6df;
 }
 
 input, textarea {
@@ -22,9 +28,14 @@ input, textarea {
 }
 
 img {
+	vertical-align: middle;
+    max-width: 100% !important;
+}
+
+img-responsive {
 	display: block;
-    width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 span {
