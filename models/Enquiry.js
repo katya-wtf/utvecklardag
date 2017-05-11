@@ -54,10 +54,10 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			templateName: 'enquiry-notification',
 			transport: 'mailgun',
 		}).send({
-			to: admins,
+	 		to: 'karzan@botani.nu',
 			from: {
-				name: 'categories',
-				email: 'categories@categories.com'
+				name: 'Utvecklardag',
+				email: 'utvecklardag@oddhill.se'
 			},
 			subject: 'New enquiry for categories',
 			enquiry: enquiry,
