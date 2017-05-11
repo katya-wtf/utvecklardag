@@ -26,5 +26,5 @@ block content
 
 				.post
 					if data.post.image.exists
-						.image-wrap: img(src=data.post._.image.fit(150, 150)).img-responsive
+						.image-wrap: img(src=data.post._.image.fit(crop)).img-responsive
 					!= data.post.content.full
