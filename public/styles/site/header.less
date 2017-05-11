@@ -56,6 +56,8 @@
 	}
 }
 
+/*APPLICATION BUTTON*/
+
 .btn-primary, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active {
 	background-color: #3f51b5;
 	font-family: Arial, Helvetica, sans-serif;
@@ -63,9 +65,61 @@
 	border-radius: 0px;
 	border: 0px;
 	float: right;
+	margin-top: 7px;
 
 	&:hover {
 		background-color: #3f51b5;
 		color: #64ffda;
 	}
+}
+
+/*MODAL STYLING*/
+
+.modal-dialog {
+
+	width: 400px;
+
+	.modal-content {
+		border: 0px;
+		border-radius: 0px;
+		background-color: #3f51b5;
+
+		.modal-header {
+			color: #64ffda;
+			border: 0px;
+			font-size: 14px;
+			font-weight: normal;
+
+			.close {
+				color: #64ffda;
+				text-shadow: none;
+				opacity: 1;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: inherit;
+				font-weight: normal;
+				text-transform: uppercase;
+			}
+		}
+		
+		.form-group {
+			
+			label {
+				color: #fdf6df;
+			}
+			
+			.form-control {
+				border-radius: 0px;
+			}
+		}
+	}
+}
+
+.submit{
+	display: block;
+	background-color: #64ffda;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #3f51b5;
+	border-radius: 0px;
+	border: 0px;
+	text-transform: uppercase;
 }

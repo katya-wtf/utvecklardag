@@ -8,6 +8,7 @@ mixin join-modal
 			.modal-dialog(role='document')
 				.modal-content
 					.modal-header
+						| JOINA!
 						button.close(type='button', data-dismiss='modal', aria-label='Close')
 							span(aria-hidden='true') x
 					.modal-body
@@ -33,4 +34,4 @@ mixin join-modal
 								label Meddelande
 								textarea(name='message', placeholder='Lämna oss ett meddelande...' rows=4).form-control= formData.message
 							.form-actions
-								button(type='submit').btn.btn-primary Skicka
+								button(type='submit').btn.btn-primary.submit Skicka
