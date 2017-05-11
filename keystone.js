@@ -4,6 +4,8 @@ require('dotenv').config();
 
 // Require keystone
 var keystone = require('keystone')
+var nodemailer = require('nodemailer')
+var Email = require('keystone-email');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -52,21 +54,57 @@ keystone.set('nav', {
 	users: 'users',
 });
 
-keystone.set('email transport', 'mailgun');
-keystone.set('mailgun api key', 'key-6573d6b1648b744549d9af7e6a250d0e');
-keystone.set('mailgun domain', 'sandboxeb5e3328519a401fac42bd43fe03a6c5.mailgun.org');
+//try mailgun
+// new Email('templates/emails/enquiry-notification.pug', {
+// 	transport: 'mailgun'
+// }).send({
+// 		firstname: 'Max',
+// 		name: 'Stoiber'
+// 	}, {
+// 		apiKey: 'key-9d94d5c7df86da729a94289c1a703a20',
+// 	 	domain: 'sandbox65190a55bafb44f69308099024e25e22.mailgun.org',
+// 	 	to: 'karzan@botani.nu',
+// 	 	from: {
+// 	 		name: 'Utvecklaradag',
+// 	 		email: 'utvecklardag@oddhill.se',
+// 	 	},
+// 	 	subject: 'Your first KeystoneJS email',
+// 	}, function (err, result) {
+// 		if (err) {
+// 	 		console.error('🤕 Mailgun test failed with error:\n', err);
+// 	 	} else {
+// 	 		console.log('📬 Successfully sent Mailgun test with result:\n', result);
+// 	 	}
+// });
 
+// try nodemailer
+// let transporter = nodemailer.createTransport({
+// 	service: 'gmail',
+// 	secure: false,
+// 	port: 25,
+// 	auth: {
+// 		user: 'bot.karzan@gmail.com',
+// 		pass: 'aftonblad3t'
+// 	},
+// 	tls: {
+// 		rejectUnauthorized: false
+// 	}
+// });
 
-// Start Keystone to connect to your database and initialise the web server
+// let HelperOptions = {
+// 	form: '"Utvecklardag" <bot.karzan@gmail.com',
+// 	to: 'karzan@botani.nu',
+// 	subject: 'Hello',
+// 	text: 'Wow, this tutorial sucks'
+// };
 
-if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
-	console.log('----------------------------------------'
-	+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
-	+ '\n----------------------------------------'
-	+ '\nYou have opted into email sending but have not provided'
-	+ '\nmailgun credentials. Attempts to send will fail.'
-	+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
-	+ '\nset up your mailgun integration');
-}
+// transporter.sendMail(HelperOptions, (error, info) => {
+// 	if(error){
+// 		return console.log(error);
+// 	} else {
+// 		console.log('The message was sent');
+// 		console.log(info);
+// 	}
+// });
 
 keystone.start();

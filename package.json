@@ -14,7 +14,8 @@
     "eslint": "3.15.0",
     "eslint-config-keystone": "3.0.0",
     "eslint-plugin-react": "^5.1.1",
-    "gulp-watch": "^4.3.11"
+    "gulp-watch": "^4.3.11",
+    "nodemailer": "^4.0.1"
   },
   "scripts": {
     "lint": "eslint .",
