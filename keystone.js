@@ -24,6 +24,7 @@ keystone.init({
 	'emails': 'templates/emails',
 
 	'auto update': true,
+	'mongo': 'mongodb://localhost/utvecklardag',
 	'session': true,
 	'auth': true,
 	'user model': 'User',

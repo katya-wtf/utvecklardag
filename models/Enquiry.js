@@ -15,8 +15,8 @@ Enquiry.add({
 		{ value: 'devday', label: 'Jag vill anmäla mig till utvecklardagen!' },
 		{ value: 'project-signup', label: 'Jag vill anmäla mig till ett projekt!' },
 		{ value: 'client', label: 'Intresseanmälan om konsulttid' }
-	] },
-	message: { type: Types.Markdown, required: true },
+	], required: true },
+	message: { type: Types.Markdown },
 	createdAt: { type: Types.Date, default: Date.now }
 });
 
