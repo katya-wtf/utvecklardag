@@ -44,8 +44,8 @@ html
 			//- ... or completely change this header to suit your design.
 
 			div(role="navigation").navbar.navbar-default
-				.container-fluid
-					.navbar-header
+				.navbar-header
+					.container
 						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
 							span.sr-only Toggle navigation
 							span.icon-bar
@@ -53,12 +53,12 @@ html
 							span.icon-bar
 						a(href='/')
 							img(src='/images/OddHillLogotyp/Klar/PNG/symbol_svart.png').nav-image
-					.collapse.navbar-collapse.headlines
-						ul.nav.navbar-nav.navbar-left
-							each link in navLinks
-								li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-						ul.nav.navbar-nav.navbar-right
-							+join-modal
+				.collapse.navbar-collapse.headlines
+					ul.nav.navbar-nav.navbar-left
+						each link in navLinks
+							li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+					ul.nav.navbar-nav.navbar-right
+						+join-modal
 		//- BODY
 		#body
 
