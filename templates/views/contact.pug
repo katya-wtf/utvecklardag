@@ -4,6 +4,8 @@ block content
 	.container
 		if enquirySubmitted
 			h2 Tack!
+		else if validationErrors
+			h2 Fel!
 		else
 			.row: .col-sm-8.col-sm-offset-3.col-md-6
 				form(method='post')

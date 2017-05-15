@@ -1,8 +1,10 @@
+include flash-messages
+
 mixin join-modal
 	button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal')
 		| JOINA!
 	if enquirySubmitted
-		h2 Tack!
+		+flash-messages(messages)
 	else
 		#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
 			.modal-dialog(role='document')
@@ -33,5 +35,6 @@ mixin join-modal
 							.form-group(class=validationErrors.message ? 'has-error' : null)
 								label Meddelande
 								textarea(name='message', placeholder='Lämna oss ett meddelande...' rows=4).form-control= formData.message
+							+flash-messages(messages)
 							.form-actions
 								button(type='submit').btn.btn-primary.submit Skicka

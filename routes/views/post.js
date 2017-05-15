@@ -16,7 +16,7 @@ exports = module.exports = function (req, res) {
     };
 
     //enquiry/contact
-    locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
+	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
 	locals.formData = req.body || {};
 	locals.validationErrors = {};
 	locals.enquirySubmitted = false;
@@ -29,11 +29,12 @@ exports = module.exports = function (req, res) {
 		updater.process(req.body, {
 			flashErrors: true,
 			fields: 'name, email, phone, enquiryType, message',
-			errorMessage: 'There was a problem submitting your enquiry:',
+			errorMessage: 'Var vänlig försök igen',
 		}, function (err) {
 			if (err) {
-				locals.validationErrors = err.errors;
+				locals.data.validationErrors = err.errors;
 			} else {
+				req.flash('success', 'Your message was sent :)');
 				locals.enquirySubmitted = true;
 			}
 			next();
