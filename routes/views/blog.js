@@ -16,32 +16,6 @@ exports = module.exports = function (req, res) {
         categories: []
     };
 
-    //enquiry/contact
-	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
-	locals.formData = req.body || {};
-	locals.validationErrors = {};
-	locals.enquirySubmitted = false;
-
-	view.on('post', { action: 'contact' }, function (next) {
-
-		var newEnquiry = new Enquiry.model();
-		var updater = newEnquiry.getUpdateHandler(req);
-
-		updater.process(req.body, {
-			flashErrors: true,
-			fields: 'name, email, phone, enquiryType, message',
-			errorMessage: 'Var vänlig försök igen',
-		}, function (err) {
-			if (err) {
-				locals.data.validationErrors = err.errors;
-			} else {
-				req.flash('success', 'Your message was sent :)');
-				locals.enquirySubmitted = true;
-			}
-			next();
-		});
-	});
-
     //load all categories
     view.on('init', function (next) {
         keystone.list('PostCategory').model
@@ -113,6 +87,32 @@ exports = module.exports = function (req, res) {
             next(err);
         });
     });
+
+    //enquiry/contact
+	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
+	locals.formData = req.body || {};
+	locals.validationErrors = {};
+	locals.enquirySubmitted = false;
+
+	view.on('post', { action: 'contact' }, function (next) {
+
+		var newEnquiry = new Enquiry.model();
+		var updater = newEnquiry.getUpdateHandler(req);
+
+		updater.process(req.body, {
+			flashErrors: true,
+			fields: 'name, email, phone, enquiryType, message',
+			errorMessage: 'Var vänlig försök igen',
+		}, function (err) {
+			if (err) {
+				locals.data.validationErrors = err.errors;
+			} else {
+				req.flash('success', 'Your message was sent :)');
+				locals.enquirySubmitted = true;
+			}
+			next();
+		});
+	});
 
     view.render('blog');
 };

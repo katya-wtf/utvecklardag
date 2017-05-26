@@ -20,6 +20,10 @@ User.schema.virtual('canAccessKeystone').get(function () {
 //Relationships
 User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
 
+User.relationship({ ref: 'Project', path: 'projects', refPath: 'projectOwner' });
+User.relationship({ ref: 'Project', path: 'projects', refPath: 'participants' });
+User.relationship({ ref: 'Project', path: 'projects', refPath: 'contactPerson' });
+
 
 //Registration
 User.defaultColumns = 'name, email, isAdmin';

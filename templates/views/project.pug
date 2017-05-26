@@ -24,12 +24,59 @@ block content
 											| ,
 										else
 											|
-								if data.project.author
-									|  av #{data.project.author.name.first}
 
 						.project
-							if data.project.image.exists
-								.image-wrap: img(src=data.project._.image.fit(150,150)).img-responsive
-							!= data.project.content.full
+							if data.project.projectOwner && data.project.projectOwner.length
+								b Projektägare:&nbsp;
+								each owner, owner_i in data.project.projectOwner
+									= owner.name.full
+									if owner_i < data.project.projectOwner.length - 1
+										| ,&nbsp;
+									else
+										|&nbsp;
+							br
+							br
+							if data.project.goal
+								b Mål:
+								!= data.project.goal
+							if data.project.currentMaterial
+								b Befintligt material:
+								!= data.project.currentMaterial
+							if data.project.individualROI
+								b Individuell ROI:
+								!= data.project.individualROI
+							if data.project.oddHillROI
+								b Odd Hill ROI:
+								!= data.project.oddHillROI
+							if data.project.technicalChoice
+								b Tekniskt val:
+								!= data.project.technicalChoice
+							if data.project.participants && data.project.participants.length
+								b Deltagare:&nbsp;
+								each participant, participant_i in data.project.participants
+									= participant.name.full
+									if participant_i < data.project.participants.length - 1
+										| ,&nbsp;
+									else
+										|&nbsp;
+							br
+							br
+							if data.project.neededResources
+								b Behov av resurser/kompetenser/material:
+								!= data.project.neededResources
+							if data.project.timePlan
+								b Ungefärlig tidsplan:
+								!= data.project.timePlan
+							if data.project.finishedWhen
+								b Projektet är klart när:
+								!= data.project.finishedWhen
+							if data.project.contactPerson && data.project.contactPerson.length
+								b Kontaktperson:&nbsp;
+								each person, person_i in data.project.contactPerson
+									= person.name.full
+									if person_i < data.project.contactPerson.length - 1
+										| ,&nbsp;
+									else
+										|&nbsp;
 			.col-sm-5
 				+join-modal

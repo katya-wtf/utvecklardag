@@ -15,6 +15,36 @@ exports = module.exports = function (req, res) {
 		projects: []
 	};
 
+	//load current project
+	view.on('init', function (next) {
+
+		var q = keystone.list('Project').model.findOne({
+			state: 'published',
+			slug: locals.filters.project
+		}).populate('projectOwner participants contactPerson categories');
+
+		q.exec(function (err, result) {
+			locals.data.project = result;
+			next(err);
+		});
+	});
+
+	//load all projects
+	view.on('init', function (next) {
+
+		var q = keystone.list('Project')
+						.model
+						.find()
+						.where('state', 'published')
+						.sort('-publishedDate')
+						.populate('projectOwner');
+
+		q.exec(function (err, results) {
+			locals.data.projects = results;
+			next(err);
+		});
+	});
+
 	//enquiry/contact
 	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
 	locals.formData = req.body || {};
@@ -38,36 +68,6 @@ exports = module.exports = function (req, res) {
 				locals.enquirySubmitted = true;
 			}
 			next();
-		});
-	});
-
-	//load current project
-	view.on('init', function (next) {
-
-		var q = keystone.list('Project').model.findOne({
-			state: 'published',
-			slug: locals.filters.project
-		}).populate('author categories');
-
-		q.exec(function (err, result) {
-			locals.data.project = result;
-			next(err);
-		});
-	});
-
-	//load all projects
-	view.on('init', function (next) {
-
-		var q = keystone.list('Project')
-						.model
-						.find()
-						.where('state', 'published')
-						.sort('-publishedDate')
-						.populate('author');
-
-		q.exec(function (err, results) {
-			locals.data.projects = results;
-			next(err);
 		});
 	});
 

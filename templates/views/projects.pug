@@ -18,9 +18,8 @@ mixin project(project)
 				|  av #{project.author.name.first}
 		if project.image.exists
 			img(src=project._.image.fit(160,160)).img.pull-right
-		p!= project.content.brief
-		if project.content.extended
-			p.read-more: a(href='/projects/project/' + project.slug) Läs mer...
+		p!= project.goal
+		p.read-more: a(href='/projects/project/' + project.slug) Läs mer...
 
 block intro
 	.container: .row: .col-sm-12.col-md-12

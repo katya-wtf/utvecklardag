@@ -10,7 +10,7 @@ var Project = new keystone.List('Project', {
 
 Project.add({
 	title: { type: String, required: true },
-	author: { type: Types.Relationship, ref: 'User', index: true },
+	projectOwner: { type: Types.Relationship, ref: 'User', index: true, many: true },
 	state: {
 		type: Types.Select,
 		options: 'draft, published, archived',
@@ -25,17 +25,23 @@ Project.add({
 		}
 	},
 	image: { type: Types.CloudinaryImage },
-	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 200 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 }
-	},
+	// content: {
+	// 	brief: { type: Types.Html, wysiwyg: true, height: 200 },
+	// 	extended: { type: Types.Html, wysiwyg: true, height: 400 }
+	// },
+	goal: { type: Types.Html, wysiwyg: true, height: 200 },
+	currentMaterial: { type: Types.Html, wysiwyg: true, height: 150 },
+	individualROI: { type: Types.Html, wysiwyg: true, height: 150 },
+	oddHillROI: { type: Types.Html, wysiwyg: true, height: 150 },
+	technicalChoice: { type: Types.Html, wysiwyg: true, height: 150 },
+	participants: { type: Types.Relationship, ref: 'User', index: true, many: true },
+	neededResources: { type: Types.Html, wysiwyg: true, height: 150 },
+	timePlan: { type: Types.Html, wysiwyg: true, height: 100 },
+	finishedWhen: { type: Types.Html, wysiwyg: true, height: 100 },
+	contactPerson: { type: Types.Relationship, ref: 'User', index: true, many: true },
 	categories: { type: Types.Relationship, ref: 'ProjectCategory', many: true }
 });
 
-Project.schema.virtual('content.full').get(function (){
-	return this.content.extended || this.content.brief;
-});
-
-Project.defaultColumns = 'title, state|20%, author|20%, categories|20%, publishedDate|20%';
+Project.defaultColumns = 'title, state|20%, projectOwner|20%, categories|20%, publishedDate|20%';
 
 Project.register();
