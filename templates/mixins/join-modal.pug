@@ -29,7 +29,6 @@ mixin join-modal
 							.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
 								label Vad kontaktar du oss för?
 								select(name='enquiryType').form-control
-									option(value='') Välj
 									each type in enquiryTypes
 										option(value=type.value, selected=formData.enquiryType == type.value)= type.label
 							.form-group(class=validationErrors.message ? 'has-error' : null)

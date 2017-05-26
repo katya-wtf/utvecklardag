@@ -17,13 +17,13 @@ block content
 								if data.project.publishedDate
 									|  #{data.project._.publishedDate.format('YYYY-MM-DD')}
 								if data.project.categories && data.project.categories.length
-									|  i
+									|  i&nbsp;
 									each cat, cat_i in data.project.categories
 										a(href='/projects/' + cat.key)= cat.name
 										if cat_i < data.project.categories.length - 1
-											| ,
+											| ,&nbsp;
 										else
-											|
+											|&nbsp;
 
 						.project
 							if data.project.projectOwner && data.project.projectOwner.length

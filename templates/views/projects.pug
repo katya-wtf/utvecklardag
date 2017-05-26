@@ -7,15 +7,13 @@ mixin project(project)
 			if project.publishedDate
 				|  #{project._.publishedDate.format('YYYY-MM-DD')}
 			if project.categories && project.categories.length
-				|  i
+				|  i&nbsp;
 				each cat, i in project.categories
 					a(href='/projects/' + cat.key)= cat.name
 					if i < project.categories.length - 1
-						| ,
+						| ,&nbsp;
 					else
-						|
-			if project.author
-				|  av #{project.author.name.first}
+						|&nbsp;
 		if project.image.exists
 			img(src=project._.image.fit(160,160)).img.pull-right
 		p!= project.goal
