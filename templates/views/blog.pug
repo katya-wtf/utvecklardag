@@ -12,8 +12,9 @@ mixin post(post)
 		.blog-pull-right
 			h2.headlines.blog-post-headline: a(href='/blog/post/' + post.slug)= post.title
 			p!= post.content.brief
-			.blog-post-author
-				p!= post.author.name.first
+			if post.author
+				.blog-post-author
+					p!= post.author.name.first
 			if post.categories && post.categories.length
 				|
 				each cat, i in post.categories
