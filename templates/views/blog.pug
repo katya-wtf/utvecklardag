@@ -2,25 +2,28 @@ extends ../layouts/default
 
 mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-		h2.headlines: a(href='/blog/post/' + post.slug)= post.title
-		p.lead.text-muted Publicerad
+		.blog-pull-left
+			if post.image.exists
+				img(src=post._.image.fit()).img.pull-left
 			if post.publishedDate
-				|  #{post._.publishedDate.format('YYYY-MM-DD')}
+				time.blog-published-date
+					span.blog-post-date= post._.publishedDate.format('YYYY-MM-DD')
+
+		.blog-pull-right
+			h2.headlines.blog-post-headline: a(href='/blog/post/' + post.slug)= post.title
+			p!= post.content.brief
+			.blog-post-author
+				p!= post.author.name.first
 			if post.categories && post.categories.length
-				|  i
+				|
 				each cat, i in post.categories
-					a(href='/blog/' + cat.key)= cat.name
+					a(href='/blog/' + cat.key).blog-post-category= cat.name
 					if i < post.categories.length - 1
 						| ,
 					else
 						|
-			if post.author
-				|  av #{post.author.name.first}
-		if post.image.exists
-			img(src=post._.image.fit(crop)).img.pull-right
-		p!= post.content.brief
-		if post.content.extended
-			p.read-more: a(href='/blog/post/' + post.slug) Läs mer...
+			if post.content.extended
+				a(href='/blog/post/' + post.slug).blog-read-more Läs mer
 
 block intro
 	.container-fluid
@@ -31,7 +34,7 @@ block intro
 
 block content
 	.container: .row
-		.col-sm-8.col-md-9
+		.col-sm-9.col-md-10
 			if filters.category && !data.category
 				h3.text-muted Ogiltig kategori.
 			else
@@ -69,9 +72,11 @@ block content
 						h3.text-muted Det finns inga inlägg ännu.
 
 		if data.categories.length
-			.col-sm-4.col-md-3
+			.col-sm-2.col-md-1.category-list
 				h2 Kategorier
-				.list-group(style='margin-top: 20px;')
+				.list-group
 					a(href='/blog', class=!data.category ? 'active' : false).list-group-item Alla kategorier
 					each cat in data.categories
 						a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+
+

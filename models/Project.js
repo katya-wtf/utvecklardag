@@ -29,6 +29,7 @@ Project.add({
 	// 	brief: { type: Types.Html, wysiwyg: true, height: 200 },
 	// 	extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	// },
+	purpose: { type: Types.Html, wysiwyg: true, height: 200 },
 	goal: { type: Types.Html, wysiwyg: true, height: 200 },
 	currentMaterial: { type: Types.Html, wysiwyg: true, height: 150 },
 	individualROI: { type: Types.Html, wysiwyg: true, height: 150 },

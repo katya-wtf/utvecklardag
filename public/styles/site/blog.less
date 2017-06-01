@@ -7,6 +7,82 @@
     z-index: 1;
 }
 
+.post {
+	padding: 40px 0;
+	margin-left: 5%;
+	border-bottom: 2px solid #64ffda;
+
+	.blog-pull-left {
+		width: 30%;
+		float: left !important;
+		margin-right: 2.5%;
+		display: block;
+		height: 200px;
+		position: relative;
+
+		.pull-left {
+			height:100%;
+			width: 100%;
+		}
+
+		.blog-published-date {
+			font-style: italic;
+			font-size: 30px;
+			line-height: 30px;
+			float: left;
+		    display: block;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    color: white;
+
+		    .blog-post-date {
+		    	display: block;
+		    	font-size: 32px;
+		    	line-height: 32px;
+		    }
+		}
+	}
+
+	.blog-pull-right {
+
+		width: 60%;
+		display: inline-block;
+
+		.blog-post-headline {
+			margin-top: 0;
+		}
+
+		.blog-post-author {
+			font-style: italic;
+			margin-top: 30px;
+		}
+
+		.blog-post-category {
+			font-style: italic;
+		}
+
+		.blog-read-more {
+			float: right;
+			height: 40px;
+		    line-height: 40px;
+		    padding: 0 20px;
+		    border-radius: 100px;
+		    text-transform: uppercase;
+		    text-align: center;
+		    background-color: #64ffda;
+		    color: black;
+		}
+	}
+}
+
+.category-list {
+	padding: 40px 0;
+	float: right;
+	margin-right: 5%;
+}
+
 .intro {
     position: absolute;
     z-index: 3
@@ -25,4 +101,53 @@ content {
 list-group-item.active {
     background-color: #64ffda !important;
     border-color: none;
+}
+
+/* ACTUAL POST VIEW */
+.post-backdrop {
+	position: relative;
+	z-index: 0;
+	height: 400px;
+	display: block;
+
+	.post-background {
+		width: 100%;
+		height: 400px;
+	}
+
+	.post-headline {
+		margin-top: -250px;
+	    max-width: 1180px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    color: white;
+	    position: relative;
+
+	    .post-title {
+	    	margin: 0;
+	    	text-align: center;
+	    	font-size: 60px;
+	    }
+	}
+}
+
+.post-main {
+
+	margin-bottom: 30px;
+	margin-top: 30px;
+
+	hr {
+		border-top: 1px solid #64ffda;
+	}
+
+	.post-title {
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	.post-bottom-section {
+		border-top: 1px solid #64ffda;
+		padding-top: 20px;
+		text-align: left;
+	}
 }

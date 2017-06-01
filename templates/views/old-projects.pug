@@ -1,39 +1,31 @@
 extends ../layouts/default
 
 mixin project(project)
-	.projects.col-sm-4.col-md-2(data-ks-editable=editable(user, { list: 'Project', id: project.id }))
-		h3.projects-header.headlines: a(href='/projects/project/' + project.slug)= project.title
+	.project(style='border: 1px solid black;').col-sm-6.col-md-4(data-ks-editable=editable(user, { list: 'Project', id: project.id }))
+		h2.headlines: a(href='/projects/project/' + project.slug)= project.title
+		p.lead.text-muted Publicerad
+			if project.publishedDate
+				|  #{project._.publishedDate.format('YYYY-MM-DD')}
+			if project.categories && project.categories.length
+				|  i&nbsp;
+				each cat, i in project.categories
+					a(href='/projects/' + cat.key)= cat.name
+					if i < project.categories.length - 1
+						| ,&nbsp;
+					else
+						|&nbsp;
 		if project.image.exists
 			img(src=project._.image.fit(160,160)).img.pull-right
-		if project.purpose
-			b Syfte:
-			!= project.purpose
-		if project.goal
-			b Mål:
-			!= project.goal
+		p!= project.goal
+		p.read-more: a(href='/projects/project/' + project.slug) Läs mer...
 
 block intro
-	.container
-		.row
-			.col-sm-10.col-md-10
-				h1 /PROJEKT
-			.col-sm-2.col-md-2.category-dropdown
-				if data.categories.length
-					.dropdown
-						button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
-							| Kategorier
-							span.caret
-						ul.dropdown-menu(aria-labelledby='dropdownMenu1')
-							li
-								a(href='/projects', class=!data.category ? 'active' : false) Alla projekt
-							each cat in data.categories
-								li
-									a(href='/projects/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).active= cat.name
-
+	.container: .row: .col-sm-12.col-md-12
+		h1 /PROJEKT
 
 block content
-	.container-fluid: .row
-		.col-sm-9.col-md-12.try-projects
+	.container: .row
+		.col-sm-8.col-md-9
 			if filters.category && !data.category
 				h3.text-muted Felaktig kategori.
 			else
@@ -47,7 +39,7 @@ block content
 							strong #{data.projects.total}
 							|  projekt.
 
-					.all-projects
+					.projects
 						each project in data.projects.results
 							+project(project)
 
@@ -69,3 +61,11 @@ block content
 						h3.text-muted Det finns inga projekt i kategorin #{data.category.name}.
 					else
 						h3.text-muted Det finns inga projekt ännu.
+
+		if data.categories.length
+			.col-sm-2.col-md-1.category-list
+				h2 Kategorier
+				.list-group
+					a(href='/projects', class=!data.category ? 'active' : false).list-group-item Alla kategorier
+					each cat in data.categories
+						a(href='/projects/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name

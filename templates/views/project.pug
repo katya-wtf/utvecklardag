@@ -2,81 +2,78 @@ extends ../layouts/default
 include ../mixins/join-modal
 
 block content
-	.container
+	.container-fluid
 		.row
-			.col-sm-6
+			.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2.project-main
 				article
 					p: a(href='/projects') &larr; tillbaka till projekten
 					hr
-					if !data.project
-						h2 Nothing to see here!
-					else
-						header
-							h1.headlines= data.project.title
-							h5 Publicerad
-								if data.project.publishedDate
-									|  #{data.project._.publishedDate.format('YYYY-MM-DD')}
-								if data.project.categories && data.project.categories.length
-									|  i&nbsp;
-									each cat, cat_i in data.project.categories
-										a(href='/projects/' + cat.key)= cat.name
-										if cat_i < data.project.categories.length - 1
-											| ,&nbsp;
-										else
-											|&nbsp;
+					header
+						h1.project-title.headlines= data.project.title
 
-						.project
-							if data.project.projectOwner && data.project.projectOwner.length
-								b Projektägare:&nbsp;
-								each owner, owner_i in data.project.projectOwner
-									= owner.name.full
-									if owner_i < data.project.projectOwner.length - 1
-										| ,&nbsp;
-									else
-										|&nbsp;
-							br
-							br
-							if data.project.goal
-								b Mål:
-								!= data.project.goal
-							if data.project.currentMaterial
-								b Befintligt material:
-								!= data.project.currentMaterial
-							if data.project.individualROI
-								b Individuell ROI:
-								!= data.project.individualROI
-							if data.project.oddHillROI
-								b Odd Hill ROI:
-								!= data.project.oddHillROI
-							if data.project.technicalChoice
-								b Tekniskt val:
-								!= data.project.technicalChoice
-							if data.project.participants && data.project.participants.length
-								b Deltagare:&nbsp;
-								each participant, participant_i in data.project.participants
-									= participant.name.full
-									if participant_i < data.project.participants.length - 1
-										| ,&nbsp;
-									else
-										|&nbsp;
-							br
-							br
-							if data.project.neededResources
-								b Behov av resurser/kompetenser/material:
-								!= data.project.neededResources
-							if data.project.timePlan
-								b Ungefärlig tidsplan:
-								!= data.project.timePlan
-							if data.project.finishedWhen
-								b Projektet är klart när:
-								!= data.project.finishedWhen
-							if data.project.contactPerson && data.project.contactPerson.length
-								b Kontaktperson:&nbsp;
-								each person, person_i in data.project.contactPerson
-									= person.name.full
-									if person_i < data.project.contactPerson.length - 1
-										| ,&nbsp;
-									else
-										|&nbsp;
-			.col-sm-5
-				+join-modal
+			.col-md-4.col-md-offset-1.project-content-one
+				if data.project.projectOwner && data.project.projectOwner.length
+					b Projektägare:&nbsp;
+					each owner, owner_i in data.project.projectOwner
+						= owner.name.full
+						if owner_i < data.project.projectOwner.length - 1
+							| ,&nbsp;
+						else
+							|&nbsp;
+				p
+				if data.project.purpose
+					b Syfte:
+					!= data.project.purpose
+				if data.project.goal
+					b Mål:
+					!= data.project.goal
+				if data.project.currentMaterial
+					b Befintligt material:
+					!= data.project.currentMaterial
+				if data.project.individualROI
+					b Individuell ROI:
+					!= data.project.individualROI
+				if data.project.oddHillROI
+					b Odd Hill ROI:
+					!= data.project.oddHillROI
+
+			.col-md-4.col-md-offset-2.project-content-two
+				if data.project.technicalChoice
+					b Tekniskt val:
+					!= data.project.technicalChoice
+				if data.project.participants && data.project.participants.length
+					b Deltagare:&nbsp;
+					each participant, participant_i in data.project.participants
+						!= participant.name.full
+						if participant_i < data.project.participants.length - 1
+							| ,&nbsp;
+						else
+							|&nbsp;
+				p
+				if data.project.neededResources
+					b Behov av resurser/kompetenser/material:
+					!= data.project.neededResources
+				if data.project.timePlan
+					b Ungefärlig tidsplan:
+					!= data.project.timePlan
+				if data.project.finishedWhen
+					b Projektet är klart när:
+					!= data.project.finishedWhen
+				if data.project.contactPerson && data.project.contactPerson.length
+					b Kontaktperson:&nbsp;
+					each person, person_i in data.project.contactPerson
+						= person.name.full
+						if person_i < data.project.contactPerson.length - 1
+							| ,&nbsp;
+						else
+							|&nbsp;
+
+			.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2.project-bottom-section
+				if data.project.categories && data.project.categories.length
+					|&nbsp;
+					each cat, cat_i in data.project.categories
+						a(href='/projects/' + cat.key)= cat.name
+						if cat_i < data.project.categories.length - 1
+							| ,&nbsp;
+						else
+							|&nbsp;
