@@ -4,7 +4,6 @@
 	padding-top: 3%;
 	padding-left: 10%;
 	padding-right: 10%;
-	padding-bottom: 1%;
 }
 
 .container-fluid {
@@ -23,6 +22,7 @@
 .navbar-default {
 	background-color: #64ffda;
 	border: 0px;
+	margin-bottom: 0px;
 
 	.navbar-header {
 		.nav-image {
@@ -75,11 +75,22 @@
 		background-color: #3f51b5;
 		color: #64ffda;
 	}
+
+	.modal-backdrop {
+    	position: fixed;
+    	top: 0;
+    	right: 0;
+    	bottom: 0;
+   	 	left: 0;
+    	z-index: 1040;
+    	background-color: firebrick;
+	}
 }
 
 /*MODAL STYLING*/
 #myModal {
 
+<<<<<<< HEAD
 	position: absolute;
 	z-index: 1050;
 	float: right;
@@ -87,24 +98,38 @@
 
 	.modal-dialog {
 
+=======
+	.polygon {
+			display: block;
+			float: right;
+			background-color: #64ffda;
+			z-index: 1;
+		}
+
+	.modal-dialog {
+
+		float: right;
+>>>>>>> 45a0f53d836d3c31120b8d8105a2138107be5216
 		margin: 0px;
 		width: 100vw;
 		height:100vh;
-		//clip-path: polygon(100% 0, 95% 82%, 72% 100%, 5% 85%, 0 7%); TEST OF POLYGON MODAL
 
 		.modal-content {
 			width: 400px;
 			border: 0px;
 			border-radius: 0px;
-			background-color: #3f51b5;
+			background-color: #d3438c;
 
 			.modal-header {
+				float: left;
 				color: #64ffda;
 				border: 0px;
 				font-size: 14px;
 				font-weight: normal;
+				z-index: 3;
 
 				.close {
+					float: right;
 					color: #64ffda;
 					text-shadow: none;
 					opacity: 1;
@@ -112,9 +137,12 @@
 					font-size: inherit;
 					font-weight: normal;
 					text-transform: uppercase;
+					z-index: 3;
 				}
+
 			}
 
+<<<<<<< HEAD
 			.form-group {
 
 				label {
@@ -123,9 +151,27 @@
 
 				.form-control {
 					border-radius: 0px;
+=======
+			.modal-body {
+
+				float: right;
+				z-index: 3;
+
+				.form-group {
+				
+					label {
+						color: #fdf6df;
+					}
+				
+					.form-control {
+						border-radius: 0px;
+					}
+					text-transform: uppercase;
+>>>>>>> 45a0f53d836d3c31120b8d8105a2138107be5216
 				}
-				text-transform: uppercase;
+
 			}
+			
 		}
 
 		#flash-messages {
@@ -138,7 +184,17 @@
 			}
 		}
 	}
+
+	.filter {
+		opacity: 0.5;
+    	-moz-filter:hue-rotate(90deg);
+    	-webkit-filter:hue-rotate(90deg);
+    	-o-filter:hue-rotate(90deg);
+    	-ms-filter:hue-rotate(90deg);
+    	filter:hue-rotate(90deg);
+	}
 }
+
 
 .submit{
 	display: block;
