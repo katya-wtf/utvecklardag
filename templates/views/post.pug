@@ -4,8 +4,8 @@ block content
 	.container-fluid: .row
 		.col-sm-12.col-md-12.post-backdrop
 			if data.post.image.exists
-				img(src=data.post._.image.fit(1000, 400)).post-background.cover
-			.post-headline
+				img(src=data.post._.image.fit(1000, 400)).post-background.cover.filter
+			.post-headline.no-filter
 				h1.post-title.headlines= data.post.title
 
 		.col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2.post-main
