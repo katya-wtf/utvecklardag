@@ -4,7 +4,7 @@ block content
 	.container-fluid: .row
 		.col-sm-12.col-md-12.post-backdrop
 			if data.post.image.exists
-				img(src=data.post._.image.fit(1000, 400)).post-background
+				img(src=data.post._.image.fit(1000, 400)).post-background.cover
 			.post-headline
 				h1.post-title.headlines= data.post.title
 

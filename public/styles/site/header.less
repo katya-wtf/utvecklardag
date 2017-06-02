@@ -77,31 +77,35 @@
 /*MODAL STYLING*/
 #myModal {
 	width: auto;
-	height: auto;
-	top: 3%;
-	left: 59%;
+	height: 100%;
+	top: 5%;
+	left: 60%;
+	//opacity: 0.5;
 
 	.modal-dialog {
 		margin: 0px;
 		width: 100vw;
 		height:100vh;
+		position: relative;
+		z-index: 1090;
 
 		.modal-content {
 			width: 400px;
 			border: 0px;
 			border-radius: 0px;
-			background-color: #3f51b5;
+			//background-color: #3f51b5;
+			background-color: rgba(63, 81, 181, 0.5);
 
 			.modal-header {
-				float: left;
+				// float: left;
 				color: #64ffda;
 				border: 0px;
 				font-size: 14px;
 				font-weight: normal;
-				z-index: 3;
+				//z-index: 3;
 
-				.close {
-					float: right;
+				button.close {
+					//float: right;
 					color: #64ffda;
 					text-shadow: none;
 					opacity: 1;
@@ -109,7 +113,7 @@
 					font-size: inherit;
 					font-weight: normal;
 					text-transform: uppercase;
-					z-index: 3;
+					//z-index: 3;
 				}
 
 			}
