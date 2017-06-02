@@ -18,7 +18,7 @@ mixin post(post)
 			if post.categories && post.categories.length
 				|
 				each cat, i in post.categories
-					a(href='/blog/' + cat.key).blog-post-category= cat.name
+					a(href='/blog/' + cat.key).blog-post-category= '#' + cat.name
 					if i < post.categories.length - 1
 						| ,
 					else
@@ -39,10 +39,10 @@ block intro
 							span.caret
 						ul.dropdown-menu(aria-labelledby='dropdownMenu1')
 							li
-								a(href='/blog', class=!data.category ? 'active' : false) Alla projekt
+								a(href='/blog', class=!data.category ? 'active' : false) Alla ämnen
 							each cat in data.categories
 								li
-									a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false)= cat.name
+									a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false)= '#' + cat.name
 
 block content
 	.container-fluid: .row
