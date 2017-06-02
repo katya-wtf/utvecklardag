@@ -1,7 +1,7 @@
 extends ../layouts/default
 
 mixin project(project)
-	.projects.col-sm-4.col-md-2(data-ks-editable=editable(user, { list: 'Project', id: project.id }))
+	.projects.col-sm-4.col-md-3(data-ks-editable=editable(user, { list: 'Project', id: project.id }))
 		h3.projects-header.headlines: a(href='/projects/project/' + project.slug)= project.title
 		if project.image.exists
 			img(src=project._.image.fit(160,160)).img.pull-right

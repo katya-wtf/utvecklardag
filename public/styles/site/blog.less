@@ -30,15 +30,17 @@
 			float: left;
 		    display: block;
 		    position: absolute;
-		    top: 0;
 		    left: 0;
 		    right: 0;
-		    color: white;
+		    bottom: 0;
+		    color: #fdf6df;
+		    opacity: 0.8;
 
 		    .blog-post-date {
 		    	display: block;
 		    	font-size: 32px;
 		    	line-height: 32px;
+		    	background-color: #3f51b5;
 		    }
 		}
 	}
@@ -49,6 +51,11 @@
 		height: 200px;
 		display: inline-block;
 		color: #fdf6df;
+
+		a {
+			color: #fe8d64;
+
+		}
 
 		.blog-post-headline {
 			margin-top: 0;
@@ -61,6 +68,7 @@
 
 		.blog-post-category {
 			font-style: italic;
+			color: #3f51b5;
 		}
 
 		.blog-read-more {
@@ -70,8 +78,8 @@
 		    padding: 0 20px;
 		    text-transform: uppercase;
 		    text-align: center;
-		    background-color: #64ffda;
-		    color: black;
+		    background-color: #3f51b5;
+		    color: #fdf6df;
 		}
 	}
 }
@@ -101,6 +109,7 @@ list-group-item.active {
 	z-index: 0;
 	height: 400px;
 	display: block;
+	padding: 0;
 
 	.post-background {
 		width: 100%;
@@ -119,6 +128,7 @@ list-group-item.active {
 	    	margin: 0;
 	    	text-align: center;
 	    	font-size: 60px;
+	    	color: #fe8d64;
 	    }
 	}
 }
@@ -127,6 +137,10 @@ list-group-item.active {
 
 	margin-bottom: 30px;
 	margin-top: 30px;
+
+	a {
+		color: #3f51b5;
+	}
 
 	hr {
 		border-top: 1px solid #64ffda;
