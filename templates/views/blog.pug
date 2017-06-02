@@ -27,7 +27,7 @@ mixin post(post)
 				a(href='/blog/post/' + post.slug).blog-read-more Läs mer
 
 block intro
-	.container
+	.container.blog-intro
 		.row
 			.col-sm-10.col-md-10
 				h1 /BLOGG
@@ -46,7 +46,7 @@ block intro
 
 block content
 	.container-fluid: .row
-			.col-sm-9.col-md-12
+			.col-sm-9.col-md-12.blog-main
 				if filters.category && !data.category
 					h3.text-muted Ogiltig kategori.
 				else
