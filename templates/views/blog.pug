@@ -45,7 +45,7 @@ block intro
 									a(href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false)= cat.name
 
 block content
-	.container-fluid: .row
+	.container: .row
 			.col-sm-9.col-md-12.blog-main
 				if filters.category && !data.category
 					h3.text-muted Ogiltig kategori.
