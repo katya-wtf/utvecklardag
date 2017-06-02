@@ -53,15 +53,15 @@ html
 							span.icon-bar
 						a(href='/')
 							img(src='/images/OddHillLogotyp/Klar/PNG/symbol_svart.png').nav-image
-				.collapse.navbar-collapse.headlines
+				.collapse.navbar-collapse
 					ul.nav.navbar-nav.navbar-left
 						each link in navLinks
-							li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+							li(class=(section == link.key ? 'active' : null)): a(href=link.href).headlines= link.label
 					ul.nav.navbar-nav.navbar-right
 						+join-modal
 		//- BODY
 		#body
-			
+
 			//- NOTE:
 			//- There is no .container wrapping class around body blocks to allow more flexibility in design.
 			//- Remember to include it in your templates when you override the intro and content blocks!

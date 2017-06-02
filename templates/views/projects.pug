@@ -5,18 +5,19 @@ mixin project(project)
 		h3.projects-header.headlines: a(href='/projects/project/' + project.slug)= project.title
 		if project.image.exists
 			img(src=project._.image.fit(160,160)).img.pull-right
-		if project.purpose
-			b Syfte
-			!= project.purpose
-		if project.goal
-			b Mål
-			!= project.goal
+		.projects-text
+			if project.purpose
+				b Syfte
+				!= project.purpose
+			if project.goal
+				b Mål
+				!= project.goal
 
 block intro
 	.container
 		.row
 			.col-sm-10.col-md-10
-				h1 /PROJEKT
+				h1.headlines /PROJEKT
 			.col-sm-2.col-md-2.category-dropdown
 				if data.categories.length
 					.dropdown

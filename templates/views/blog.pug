@@ -24,17 +24,17 @@ mixin post(post)
 					else
 						|
 			if post.content.extended
-				a(href='/blog/post/' + post.slug).blog-read-more Läs mer
+				a(href='/blog/post/' + post.slug).blog-read-more.headlines Läs mer
 
 block intro
 	.container.blog-intro
 		.row
 			.col-sm-10.col-md-10
-				h1 /BLOGG
+				h1.headlines /BLOGG
 			.col-sm-2.col-md-2.category-dropdown
 				if data.categories.length
 					.dropdown
-						button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+						button#dropdownMenu1.btn.btn-default.dropdown-toggle.headlines(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
 							| Kategorier&nbsp;
 							span.caret
 						ul.dropdown-menu(aria-labelledby='dropdownMenu1')
