@@ -6,10 +6,10 @@ mixin project(project)
 		if project.image.exists
 			img(src=project._.image.fit(160,160)).img.pull-right
 		if project.purpose
-			b Syfte:
+			b Syfte
 			!= project.purpose
 		if project.goal
-			b Mål:
+			b Mål
 			!= project.goal
 
 block intro
@@ -28,7 +28,7 @@ block intro
 								a(href='/projects', class=!data.category ? 'active' : false) Alla projekt
 							each cat in data.categories
 								li
-									a(href='/projects/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).active= cat.name
+									a(href='/projects/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).active= '#' + cat.name
 
 
 block content
