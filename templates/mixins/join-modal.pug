@@ -9,31 +9,31 @@ mixin join-modal
 		#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
 			.modal-dialog(role='document')
 				.modal-content
-					.modal-header
+					.modal-header.headlines
 						| JOINA!
 						button.close(type='button', data-dismiss='modal', aria-label='Close')
-							span(aria-hidden='true') x
+							span.headlines(aria-hidden='true') x
 					.modal-body
 						|
 						form(method='post')
 							input(type='hidden', name='action', value='contact')
 							.form-group(class=validationErrors.name ? 'has-error' : null)
-								label Namn
+								label.headlines Namn
 								input(type='text', name='name.full', value=formData['name.full']).form-control
 							.form-group(class=validationErrors.email ? 'has-error' : null)
-								label E-post
+								label.headlines E-post
 								input(type='email', name='email', value=formData.email).form-control
 							.form-group
-								label Telefonnummer
+								label.headlines Telefonnummer
 								input(type='text', name='phone', value=formData.phone, placeholder='(valfritt)').form-control
 							.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
-								label Vad kontaktar du oss för?
+								label.headlines Vad kontaktar du oss för?
 								select(name='enquiryType').form-control
 									each type in enquiryTypes
 										option(value=type.value, selected=formData.enquiryType == type.value)= type.label
 							.form-group(class=validationErrors.message ? 'has-error' : null)
-								label Meddelande
+								label.headlines Meddelande
 								textarea(name='message', placeholder='Lämna oss ett meddelande...' rows=4).form-control= formData.message
 							+flash-messages(messages)
 							.form-actions
-								button(type='submit').btn.btn-primary.submit Skicka
+								button(type='submit').btn.btn-primary.submit.headlines Skicka

@@ -10,8 +10,21 @@
 /* styles for '...' */
 .projects-text {
 
+	overflow-y: hidden;
+	position: relative;
+	//line-height: 1.2em;
+	/* max-height = line-height (1.2) * lines max number (3) */
+	max-height: 13.2em;
+	// text-align: justify;
+	margin-right: -1em;
+	padding-right: 1em;
+
 	b {
-		background-color: yellow;
+		background-color: #d3438c;
+		padding: 12px;
+		padding-top: 12px; 
+		overflow: visible;
+		
 	}
 
 	ol {
@@ -19,15 +32,6 @@
 		margin-bottom: 0;
 		padding-left: 15px;
 	}
-
-	overflow: hidden;
-	position: relative;
-	line-height: 1.2em;
-	/* max-height = line-height (1.2) * lines max number (3) */
-	max-height: 13.2em;
-	text-align: justify;
-	margin-right: -1em;
-	padding-right: 1em;
 }
 
 .projects-text:before {
@@ -55,10 +59,12 @@
 
 	.projects-header {
 		text-align: center;
+		text-transform: capitalize;
 	}
 
-	h3 a {
+	h3 a, a:hover, a:active {
 		color: #64ffda;
+		text-decoration: none;
 	}
 
 	// a:hover, a:active {
@@ -68,6 +74,9 @@
 
 	b {
 		text-transform: uppercase;
+		font-family: 'veramono';
+		color: #fdf6df;
+		overflow: visible;
 	}
 
 	p {
