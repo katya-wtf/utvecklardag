@@ -5,60 +5,48 @@
 	color: #fdf6df;
 	font-family: 'veramono';
 	text-transform: uppercase;
-
-	.btn-default {
-
-	}
 }
-
 
 /* styles for '...' */
 .projects-text {
+
 	b {
 		background-color: yellow;
 	}
-  /* hide text if it more than N lines  */
-  overflow: hidden;
-  /* for set '...' in absolute position */
-  position: relative;
-  /* use this value to count block height */
-  line-height: 1.2em;
-  /* max-height = line-height (1.2) * lines max number (3) */
-  max-height: 14.4em;
-  /* fix problem when last visible word doesn't adjoin right side  */
-  text-align: justify;
-  /* place for '...' */
-  margin-right: -1em;
-  padding-right: 1em;
+
+	ol {
+		color: #fdf6df;
+		margin-bottom: 0;
+		padding-left: 15px;
+	}
+
+	overflow: hidden;
+	position: relative;
+	line-height: 1.2em;
+	/* max-height = line-height (1.2) * lines max number (3) */
+	max-height: 13.2em;
+	text-align: justify;
+	margin-right: -1em;
+	padding-right: 1em;
 }
-/* create the ... */
+
 .projects-text:before {
-  /* points in the end */
-  content: '';
-  /* absolute position */
-  position: absolute;
-  /* set position to right bottom corner of block */
-  right: 0;
-  bottom: 0;
-  color: white;
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	color: white;
 }
-/* hide ... if we have text, which is less than or equal to max lines */
+
 .projects-text:after {
-  /* points in the end */
-  content: '';
-  /* absolute position */
-  position: absolute;
-  /* set position to right bottom corner of text */
-  right: 0;
-  /* set width and height */
-  width: 1em;
-  height: 1em;
-  margin-top: 0.2em;
-  /* bg color = bg color under block */
-  background: white;
+	content: '';
+	position: absolute;
+	right: 0;
+	width: 1em;
+	height: 1em;
+	margin-top: 0.2em;
+	background: white;
 }
-
-
 
 .projects {
 	background-color: #3f51b5;
@@ -109,23 +97,24 @@
 
 
 
+
 /* SPECIFIC PROJECT PAGES */
 .project-main {
 	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 
 	.project-title {
 		text-align: center;
-		color: #fe8d64;
+		color: #64ffda;
 		font-size: 60px;
 	}
 
 	a {
-		color: #3f51b5;
+		color: #d3438c;
 	}
 
 	hr {
-		border-top: 1px solid #d3438c;
+		border-top: 1px solid #3f51b5;
 	}
 }
 
@@ -140,11 +129,11 @@
 	margin-top: 10px;
     margin-bottom: 30px;
     padding-top: 20px;
-	border-top: 1px solid #d3438c;
+	border-top: 1px solid #3f51b5;
 	text-align: left;
 
 	a {
-		color: #3f51b5;
+		color: #d3438c;
 	}
 }
 

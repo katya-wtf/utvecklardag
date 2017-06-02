@@ -11,7 +11,7 @@ block content
 					header
 						h1.project-title.headlines= data.project.title
 
-			.col-md-4.col-md-offset-1.project-content-one
+			.col-sm-10.col-sm-offset-1.col-md-6.col-md-offset-3
 				if data.project.projectOwner && data.project.projectOwner.length
 					b Projektägare:&nbsp;
 					each owner, owner_i in data.project.projectOwner
@@ -36,8 +36,6 @@ block content
 				if data.project.oddHillROI
 					b Odd Hill ROI:
 					!= data.project.oddHillROI
-
-			.col-md-4.col-md-offset-2.project-content-two
 				if data.project.technicalChoice
 					b Tekniskt val:
 					!= data.project.technicalChoice
@@ -72,7 +70,7 @@ block content
 				if data.project.categories && data.project.categories.length
 					|&nbsp;
 					each cat, cat_i in data.project.categories
-						a(href='/projects/' + cat.key)= cat.name
+						a(href='/projects/' + cat.key)= '#' + cat.name
 						if cat_i < data.project.categories.length - 1
 							| ,&nbsp;
 						else
