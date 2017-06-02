@@ -1,14 +1,13 @@
 include flash-messages
 
 mixin join-modal
-	button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal')
+	button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal', data-backdrop='false')
 		| JOINA!
 	if enquirySubmitted
 		+flash-messages(messages)
 	else
 		#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
 			.modal-dialog(role='document')
-				.polygon.filter
 				.modal-content
 					.modal-header
 						| JOINA!

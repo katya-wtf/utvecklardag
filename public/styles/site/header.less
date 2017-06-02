@@ -72,45 +72,40 @@
 		background-color: #3f51b5;
 		color: #64ffda;
 	}
-
-	.modal-backdrop {
-    	position: fixed;
-    	top: 0;
-    	right: 0;
-    	bottom: 0;
-   	 	left: 0;
-    	z-index: 1040;
-    	background-color: firebrick;
-	}
 }
 
 /*MODAL STYLING*/
 #myModal {
-
-	position: absolute;
-	z-index: 1050;
+	width: auto;
+	height: 100%;
+	top: 5%;
+	left: 60%;
+	//opacity: 0.5;
 
 	.modal-dialog {
 		margin: 0px;
 		width: 100vw;
 		height:100vh;
+		position: relative;
+		z-index: 1090;
 
 		.modal-content {
 			width: 400px;
 			border: 0px;
 			border-radius: 0px;
-			background-color: #d3438c;
+			//background-color: #3f51b5;
+			background-color: rgba(63, 81, 181, 0.5);
 
 			.modal-header {
-				float: left;
+				// float: left;
 				color: #64ffda;
 				border: 0px;
 				font-size: 14px;
 				font-weight: normal;
-				z-index: 3;
+				//z-index: 3;
 
-				.close {
-					float: right;
+				button.close {
+					//float: right;
 					color: #64ffda;
 					text-shadow: none;
 					opacity: 1;
@@ -118,7 +113,7 @@
 					font-size: inherit;
 					font-weight: normal;
 					text-transform: uppercase;
-					z-index: 3;
+					//z-index: 3;
 				}
 
 			}
