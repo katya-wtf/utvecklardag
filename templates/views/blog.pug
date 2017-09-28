@@ -4,10 +4,12 @@ mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 		.blog-pull-left
 			if post.image.exists
-				img(src=post._.image.fit()).img.pull-left.cover
+				a(href='/blog/post/' + post.slug)
+					img(src=post._.image.fit()).img.pull-left.cover
 			if post.publishedDate
-				time.blog-published-date
-					span.blog-post-date= post._.publishedDate.format('YYYY-MM-DD')
+				a(href='/blog/post/' + post.slug)
+					time.blog-published-date
+						span.blog-post-date= post._.publishedDate.format('YYYY-MM-DD')
 
 		.blog-pull-right
 			h2.headlines.blog-post-headline: a(href='/blog/post/' + post.slug)= post.title

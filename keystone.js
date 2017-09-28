@@ -22,6 +22,8 @@ keystone.init({
 	'view engine': 'pug',
 
 	'emails': 'templates/emails',
+	'cloudinary config': 'cloudinary://456632885733733:mKC1_6vExM8mJAS0R6dh5IU8WIg@keystone-get-started',
+	'cookie secret': '=Hw1WfV6XlGW(w~K8=&5r%U2]EZ',
 
 	'auto update': true,
 	'mongo': 'mongodb://localhost/utvecklardag',
@@ -54,58 +56,5 @@ keystone.set('nav', {
 	projects: ['projects', 'project-categories'],
 	users: 'users',
 });
-
-//try mailgun
-// new Email('templates/emails/enquiry-notification.pug', {
-// 	transport: 'mailgun'
-// }).send({
-// 		firstname: 'Max',
-// 		name: 'Stoiber'
-// 	}, {
-// 		apiKey: 'key-9d94d5c7df86da729a94289c1a703a20',
-// 	 	domain: 'sandbox65190a55bafb44f69308099024e25e22.mailgun.org',
-// 	 	to: 'karzan@botani.nu',
-// 	 	from: {
-// 	 		name: 'Utvecklaradag',
-// 	 		email: 'utvecklardag@oddhill.se',
-// 	 	},
-// 	 	subject: 'Your first KeystoneJS email',
-// 	}, function (err, result) {
-// 		if (err) {
-// 	 		console.error('🤕 Mailgun test failed with error:\n', err);
-// 	 	} else {
-// 	 		console.log('📬 Successfully sent Mailgun test with result:\n', result);
-// 	 	}
-// });
-
-// try nodemailer
-// let transporter = nodemailer.createTransport({
-// 	service: 'gmail',
-// 	secure: false,
-// 	port: 25,
-// 	auth: {
-// 		user: 'bot.karzan@gmail.com',
-// 		pass: 'aftonblad3t'
-// 	},
-// 	tls: {
-// 		rejectUnauthorized: false
-// 	}
-// });
-
-// let HelperOptions = {
-// 	form: '"Utvecklardag" <bot.karzan@gmail.com',
-// 	to: 'karzan@botani.nu',
-// 	subject: 'Hello',
-// 	text: 'Wow, this tutorial sucks'
-// };
-
-// transporter.sendMail(HelperOptions, (error, info) => {
-// 	if(error){
-// 		return console.log(error);
-// 	} else {
-// 		console.log('The message was sent');
-// 		console.log(info);
-// 	}
-// });
 
 keystone.start();
